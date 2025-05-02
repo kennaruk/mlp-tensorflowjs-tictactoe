@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Tic-Tac-Toe Deep Q-Learning (TensorFlow.js)
+![Demo of Tic-Tac-Toe AI](docs/demo.gif)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple experiment with Deep Q-Learning applied to Tic-Tac-Toe, built using React and TensorFlow.js. The goal is to demonstrate how a neural network can learn to play Tic-Tac-Toe through self-play and feedback, using a minimal Q-learning setup.
 
-Currently, two official plugins are available:
+![Example of Deep Q learning diagram](docs/Deep-Q-Learning.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Deep Q-Learning**: The AI uses a neural network to estimate Q-values for each possible move.
+- **Simplicity**: All Q-learning attributes except the learning rate (`alpha`) have been removed for clarity and simplicity.
+- **Persistent Learning**: The AI's model and game count are saved in your browser's local storage, so it keeps learning across sessions.
+- **Interactive UI**: Play against the AI and watch it improve over time.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## How It Works
+
+- The AI (O) learns by playing against you (X).
+- After each game, the AI updates its neural network based on the outcome (win, lose, tie).
+- Only the learning rate (`alpha`) is used; other Q-learning parameters (like gamma, epsilon) are omitted for simplicity.
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [pnpm](https://pnpm.io/) (install with `npm install -g pnpm`)
+
+### Installation & Running
+
+```bash
+pnpm install
+pnpm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project Structure
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- `src/ai/agent.ts`: The Deep Q-Learning agent logic (TensorFlow.js).
+- `src/App.tsx`: The main React app and game logic.
+
+## Notes
+
+- To reset the AI's learning, use the "Reset AI" button in the UI.
+- This is a minimal, educational implementation and not optimized for performance or advanced strategies.
+
+## License
+
+MIT
