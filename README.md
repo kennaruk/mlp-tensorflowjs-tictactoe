@@ -5,6 +5,7 @@ This project is a simple experiment with Deep Q-Learning applied to Tic-Tac-Toe,
 
 ![Example of Deep Q learning diagram](docs/Deep-Q-Learning.png)
 
+Live demo at: https://kennaruk.github.io/mlp-tensorflowjs-tictactoe/
 
 ## Features
 
